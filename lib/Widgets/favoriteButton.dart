@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 
-class BookMark extends StatefulWidget {
-  const BookMark({
+class FaviorateButton extends StatefulWidget {
+  const FaviorateButton({
     super.key,
   });
 
   @override
-  State<BookMark> createState() => _BookMarkState();
+  State<FaviorateButton> createState() => _FaviorateButton();
 }
 
-class _BookMarkState extends State<BookMark> {
+class _FaviorateButton extends State<FaviorateButton> {
   bool outline = false;
   @override
   Widget build(BuildContext context) {

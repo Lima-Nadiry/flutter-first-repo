@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:khanagi_app/Widgets/BookMark.dart';
+import 'package:khanagi_app/Widgets/favoriteButton.dart';
 
 class homeWidget extends StatelessWidget {
   const homeWidget({super.key});
@@ -83,7 +83,7 @@ class homeWidget extends StatelessWidget {
             ],
           ),
         ),
-        Positioned(bottom: 10, right: 10, child: BookMark())
+        Positioned(bottom: 10, right: 10, child: FaviorateButton())
       ]),
     );
   }

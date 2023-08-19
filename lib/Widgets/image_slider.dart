@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:khanagi_app/Widgets/favoriteButton.dart';
+
+import 'shareButton.dart';
 
 class ImageSlider extends StatefulWidget {
   const ImageSlider({super.key});
@@ -12,42 +15,56 @@ class _ImageSliderState extends State<ImageSlider> {
     "images/image1.jpg",
     "images/image2.jpg",
     "images/image3.jpg",
-    "images/image4.jpg",
-    "images/image5.jpg",
-    "images/image6.jpg",
 
-    // Add more images as needed
+    // Addmore images as needed
   ];
   @override
   Widget build(BuildContext context) {
-    return ListView.builder(
-        scrollDirection: Axis.horizontal,
-        itemCount: images.length,
-        itemBuilder: (_, index) {
-          return Container(
-            width: double.maxFinite,
-            height: 600,
-            decoration: BoxDecoration(
-                image: DecorationImage(
-              image: AssetImage(images[index]),
-            )),
-            child: Container(
-                child: Column(children: [
-              /*   List.generate(3, (indexDots){
-              return  Container(
-                margin: const EdgeInsets.only(bottom: 2),
-                  width: 8,
-                  height: index==indexDots?25:8,
+    return Stack(children: [
+      Expanded(
+        child: SizedBox(
+          height: 400,
+          child: PageView.builder(
+              scrollDirection: Axis.horizontal,
+              itemCount: images.length,
+              itemBuilder: (_, index) {
+                return Container(
+                  width: MediaQuery.of(context).size.width,
+                  height: 200,
                   decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(8),
-                    color: index== indexDots?Colors.blue:Colors.grey,
-                  ),
-                ),
-            })
-            ,
-            */
-            ])),
-          );
-        });
+                      image: DecorationImage(
+                    fit: BoxFit.cover,
+                    image: AssetImage(
+                      images[index],
+                    ),
+                  )),
+                  child: Container(
+                      margin: const EdgeInsets.only(
+                          top: 350, left: 150, right: 150),
+                      child: Row(
+                        children: List.generate(3, (indexDots) {
+                          return Container(
+                            margin: const EdgeInsets.only(right: 2, left: 2),
+                            width: 15,
+                            height: 8,
+                            decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(8),
+                                color: index == indexDots
+                                    ? Colors.blue
+                                    : Colors.white),
+                          );
+                        }),
+                      )),
+                );
+              }),
+        ),
+      ),
+      const Positioned(
+          right: 27,
+          top: 20,
+          child: Row(
+            children: [FaviorateButton(), ShareButton()],
+          ))
+    ]);
   }
 }
