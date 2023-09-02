@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 
 class CategorySection extends StatefulWidget {
+  // ignore: prefer_typing_uninitialized_variables
   final data;
   final Color bgColor;
   final Color activeColor;
@@ -18,6 +18,7 @@ class CategorySection extends StatefulWidget {
       : super(key: key);
 
   @override
+  // ignore: library_private_types_in_public_api
   _CategorySectionState createState() => _CategorySectionState();
 }
 
@@ -51,11 +52,7 @@ class _CategorySectionState extends State<CategorySection> {
 
   @override
   Widget build(BuildContext context) {
-    var onTapVar = widget.onTap;
     var dataVar = widget.data;
-    var isActiveVar = widget.isActive;
-    var activeColorVar = widget.activeColor;
-    var bgColorVar = widget.bgColor;
 
     return Column(
       children: [
@@ -66,31 +63,9 @@ class _CategorySectionState extends State<CategorySection> {
               onPressed: () => selectCategory(dataVar["name"]),
               child: Text(dataVar["name"]),
             ),
-            SizedBox(width: 8),
-            /* ElevatedButton(
-              onPressed: () => selectCategory('Category 2'),
-              child: Text('Category 2'),
-            ),
-            SizedBox(width: 8),
-            ElevatedButton(
-              onPressed: () => selectCategory('Category 3'),
-              child: Text('Category 3'),
-            ),
-            */
+            const SizedBox(width: 8),
           ],
         ),
-        /*  Flexible(
-          child: ListView.builder(
-            // shrinkWrap: true,
-            itemCount: items.length,
-            itemBuilder: (context, index) {
-              return ListTile(
-                title: Text(items[index]),
-              );
-            },
-          ),
-        ),
-        */
       ],
     );
   }

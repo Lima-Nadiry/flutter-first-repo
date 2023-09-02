@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:khanagi_app/Widgets/Image_Grid.dart';
 import 'package:khanagi_app/Widgets/homeWidget.dart';
 import 'package:khanagi_app/Widgets/category_box.dart';
-import 'package:khanagi_app/Widgets/image_list.dart';
-import 'package:khanagi_app/category.dart';
 import 'package:khanagi_app/data.dart';
 
 class MyApp extends StatefulWidget {
@@ -18,17 +16,17 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(title: Text("  ")),
+        appBar: AppBar(title: const Text("  ")),
         body: Padding(
-          padding: EdgeInsets.all(10),
+          padding: const EdgeInsets.all(10),
           child: SingleChildScrollView(
             child: Column(
               children: [
                 Container(
-                  decoration: BoxDecoration(
+                  decoration: const BoxDecoration(
                       color: Color.fromARGB(255, 226, 227, 228),
                       borderRadius: BorderRadius.all(Radius.circular(20))),
-                  child: TextField(
+                  child: const TextField(
                     decoration: InputDecoration(
                         hintText: "Search",
                         border: InputBorder.none,
@@ -36,10 +34,10 @@ class _MyAppState extends State<MyApp> {
                         suffixIcon: Icon(Icons.category_outlined)),
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 20,
                 ),
-                Row(
+                const Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text(
@@ -57,17 +55,22 @@ class _MyAppState extends State<MyApp> {
                     ),
                   ],
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 10,
                 ),
-                Container(
+                SizedBox(
                   height: 400,
                   child: ListView(
                     scrollDirection: Axis.horizontal,
-                    children: [homeWidget(), homeWidget(), homeWidget()],
+                    // ignore: prefer_const_literals_to_create_immutables
+                    children: [
+                      const homeWidget(),
+                      const homeWidget(),
+                      const homeWidget()
+                    ],
                   ),
                 ),
-                Row(
+                const Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text(
@@ -86,7 +89,7 @@ class _MyAppState extends State<MyApp> {
                   ],
                 ),
                 SingleChildScrollView(
-                  padding: EdgeInsets.fromLTRB(15, 10, 0, 10),
+                  padding: const EdgeInsets.fromLTRB(15, 10, 0, 10),
                   scrollDirection: Axis.horizontal,
                   child: Row(
                     children: List.generate(
@@ -106,7 +109,7 @@ class _MyAppState extends State<MyApp> {
                     ),
                   ),
                 ),
-                ImageGrid(),
+                const ImageGrid(),
               ],
             ),
           ),

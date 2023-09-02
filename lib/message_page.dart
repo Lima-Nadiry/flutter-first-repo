@@ -1,36 +1,73 @@
 import 'package:flutter/material.dart';
+// ignore: depend_on_referenced_packages
 import 'package:faker/faker.dart';
+import 'package:khanagi_app/call_screen.dart';
 import 'package:khanagi_app/chat_screen.dart';
 import 'Widgets/Avatar.dart';
 import 'helpers.dart';
 import 'message_data.dart';
 // ignore: depend_on_referenced_packages
-import 'package:jiffy/jiffy.dart';
 
-class Message_Page extends StatelessWidget {
-  const Message_Page({super.key});
+class MessagePage extends StatelessWidget {
+  const MessagePage({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return CustomScrollView(
-      slivers: <Widget>[
-        SliverList(
-          delegate: SliverChildBuilderDelegate(
-            (BuildContext context, int index) {
-              final Faker faker = Faker();
-              final date = Helpers.randomDate();
-              return MessageTitle(
-                  messageData: MessageData(
-                      senderName: faker.person.name(),
-                      message: faker.lorem.sentence(),
-                      messageDate: date,
-                      // dateMessage: Jiffy.parseFromDateTime(date).fromNow(),
-                      profilePicture: Helpers.randomPictureUrl()));
-            },
-            childCount: 20, // Replace 20 with the actual number of messages
+    return Material(
+      child: Scaffold(
+        appBar: AppBar(
+          title: const Text("Messsage"),
+        ),
+        body: SingleChildScrollView(
+          child: DefaultTabController(
+            length: 2,
+            child: Column(children: [
+              const TabBar(
+                indicatorWeight: 3,
+                labelColor: Colors.blue,
+                unselectedLabelColor: Colors.grey,
+                tabs: [
+                  Padding(
+                      padding: EdgeInsets.only(top: 12, bottom: 12),
+                      child: Text('Chats')),
+                  Padding(
+                      padding: EdgeInsets.only(top: 12, bottom: 12),
+                      child: Text('Calls')),
+                ],
+              ),
+              SizedBox(
+                width: double.maxFinite,
+                height: double.maxFinite,
+                child: TabBarView(children: [
+                  CustomScrollView(
+                    slivers: <Widget>[
+                      SliverList(
+                        delegate: SliverChildBuilderDelegate(
+                          (BuildContext context, int index) {
+                            final Faker faker = Faker();
+                            final date = Helpers.randomDate();
+                            return MessageTitle(
+                                messageData: MessageData(
+                                    senderName: faker.person.name(),
+                                    message: faker.lorem.sentence(),
+                                    messageDate: date,
+                                    // dateMessage: Jiffy.parseFromDateTime(date).fromNow(),
+                                    profilePicture:
+                                        Helpers.randomPictureUrl()));
+                          },
+                          childCount:
+                              20, // Replace 20 with the actual number of messages
+                        ),
+                      ),
+                    ],
+                  ),
+                  const CallScreen()
+                ]),
+              ),
+            ]),
           ),
         ),
-      ],
+      ),
     );
   }
 }
@@ -85,6 +122,9 @@ class MessageTitle extends StatelessWidget {
                               style: const TextStyle(fontSize: 12))),
                     ],
                   )),
+                  const SizedBox(
+                    width: 5,
+                  ),
                   Padding(
                     padding: const EdgeInsets.only(right: 20.0),
                     child: Column(
@@ -95,15 +135,18 @@ class MessageTitle extends StatelessWidget {
                           height: 4,
                         ),
                         Container(
-                          height: 18,
-                          width: 18,
+                          height: 22,
+                          width: 22,
                           decoration: const BoxDecoration(
                               shape: BoxShape.circle, color: Colors.blue),
                           child: const Center(
-                            child: Text(
-                              "1",
-                              style:
-                                  TextStyle(fontSize: 10, color: Colors.white),
+                            child: Padding(
+                              padding: EdgeInsets.all(5),
+                              child: Text(
+                                "1",
+                                style: TextStyle(
+                                    fontSize: 10, color: Colors.white),
+                              ),
                             ),
                           ),
                         ),

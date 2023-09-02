@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:khanagi_app/data.dart';
 
 class CategoryButton extends StatelessWidget {
-  CategoryButton({
+  const CategoryButton({
     Key? key,
     required this.data,
     this.onTap,
   }) : super(key: key);
 
+  // ignore: prefer_typing_uninitialized_variables
   final data;
   final GestureTapCallback? onTap;
 
@@ -17,20 +17,20 @@ class CategoryButton extends StatelessWidget {
         height: 25,
         width: 65,
         decoration: BoxDecoration(
-            color: Color.fromARGB(255, 229, 239, 246),
+            color: const Color.fromARGB(255, 229, 239, 246),
             borderRadius: BorderRadius.circular(30),
             boxShadow: [
               BoxShadow(
                 color: Colors.black87.withOpacity(0.05),
                 spreadRadius: .5,
                 blurRadius: .5,
-                offset: Offset(1, 1),
+                offset: const Offset(1, 1),
               )
             ]),
         child: Center(
           child: Text(
             data,
-            style: TextStyle(
+            style: const TextStyle(
               fontSize: 10,
               color: Colors.blue,
             ),

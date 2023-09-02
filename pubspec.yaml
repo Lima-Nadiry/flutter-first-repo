@@ -35,6 +35,10 @@ dependencies:
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.2
   flutter_svg: ^2.0.7
+  camera: ^0.10.5+3
+  path_provider: ^2.1.0
+  path: ^1.8.3
+  video_player: ^2.7.0
 
 dev_dependencies:
   flutter_test:
@@ -52,6 +56,8 @@ dev_dependencies:
   stream_chat_flutter_core: ^6.8.0
   jiffy: ^6.2.1
   intl: ^0.18.1
+  emoji_picker_flutter: ^1.6.1
+  shared_preferences: ^2.2.0
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec

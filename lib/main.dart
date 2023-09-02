@@ -1,12 +1,11 @@
+import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
+import 'package:khanagi_app/Widgets/camera.dart';
+
 import 'package:khanagi_app/message_page.dart';
 
-import 'homePage.dart';
-
-void main() {
-  return runApp(
-    const MaterialApp(debugShowCheckedModeBanner: false, home: Message_Page()
-        //MyApp(),
-        ),
-  );
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  cameras = await availableCameras();
+  runApp(MaterialApp(home: MessagePage()));
 }
